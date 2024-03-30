@@ -1,0 +1,13 @@
+Regression Testing
+
+= of an ,
+, to any introduced or uncovered as a
+result of the changes in the software being tested
+= Regression testing is done by against the
+modified application whether the
+
+which was working earlier
+= Anytime we modify an application, we should do regression
+testing
+= It to the developers that there is
+after
