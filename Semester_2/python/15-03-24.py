@@ -1,57 +1,58 @@
 import keyword
-# # print(len(keyword.kwlist)) #keywords are reserved words, case-sensitive
-# print(keyword.softkwlist)
 
-# x = 10
-# print(bool(x))
+print(len(keyword.kwlist)) #keywords are reserved words, case-sensitive
+print(keyword.softkwlist)
 
-# x = True
-# print(x is True)
+x = 10
+print(bool(x))
 
-# x = False
-# print(x is False)
+x = True
+print(x is True)
 
-# print(help("True"))
+x = False
+print(x is False)
 
-# print(keyword.iskeyword('if'))
-# print(keyword.iskeyword('range'))
+print(help("True"))
 
-# Value keywords: True, False, None
-# x=100
-# print(bool(x))
+print(keyword.iskeyword('if'))
+print(keyword.iskeyword('range'))
 
-# x=None
-# print(bool(x))
+Value keywords: True, False, None
+x=100
+print(bool(x))
 
-# def func():
-#     print("hello") 
-#     return 10
-# x=func()
-# print(x)
+x=None
+print(bool(x))
 
-#Operator Keywords: and(&&), or, not, in, is(same or not =)
+def func():
+    print("hello") 
+    return 10
+x=func()
+print(x)
 
-# x=True
-# y=True
-# print(x and y)
-# print(x or y)
-# print(not x)
+Operator Keywords: and(&&), or, not, in, is(same or not =)
 
-# x=2
-# y=2
-# print(x is y)
+x=True
+y=True
+print(x and y)
+print(x or y)
+print(not x)
 
-# x=0
-# y=20
+x=2
+y=2
+print(x is y)
 
-# if x > 5 and y < 25:
-#     print(x+5)
+x=0
+y=20
 
-# if x > 5 or y < 100:
-#     print(x + 5)
+if x > 5 and y < 25:
+    print(x+5)
 
-# if not x:
-#     print(x + 5)
+if x > 5 or y < 100:
+    print(x + 5)
+
+if not x:
+    print(x + 5)
 
 
 name = "Chad"
