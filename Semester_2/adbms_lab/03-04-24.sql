@@ -322,4 +322,180 @@ MariaDB [dbmslab0304]> SELECT * FROM EMPLOYEE WHERE salary BETWEEN 90000 AND 100
 +-------+----------+------------+--------+
 3 rows in set (0.000 sec)
 
+MariaDB [dbmslab0304]> SELECT DISTINCT COURSE_ID
+    -> FROM TEACHES
+    -> WHERE SEMESTER = 'Fall' AND YEAR = 2017
+    ->    OR SEMESTER = 'Spring' AND YEAR = 2018;
++-----------+
+| COURSE_ID |
++-----------+
+| CS-101    |
+| CS-315    |
+| CS-347    |
+| FIN-201   |
+| MU-199    |
+| PHY-101   |
+| HIS-351   |
+| CS-319    |
++-----------+
+8 rows in set (0.001 sec)
 
+MariaDB [dbmslab0304]> SELECT COURSE_ID
+    -> FROM TEACHES
+    -> WHERE (SEMESTER = 'Fall' AND YEAR = 2017)
+    ->    AND (SEMESTER = 'Spring' AND YEAR = 2018);
+Empty set (0.000 sec)
+
+MariaDB [dbmslab0304]> SELECT COURSE_ID
+    -> FROM TEACHES
+    -> WHERE (SEMESTER = 'Fall' AND YEAR = 2017)
+    ->    AND COURSE_ID NOT IN (
+    ->        SELECT COURSE_ID
+    ->        FROM TEACHES
+    ->        WHERE SEMESTER = 'Spring' AND YEAR = 2018
+    ->    );
++-----------+
+| COURSE_ID |
++-----------+
+| CS-347    |
+| PHY-101   |
++-----------+
+2 rows in set (0.001 sec)
+
+
+MariaDB [dbmslab0304]> SELECT AVG(salary) AS average_salary
+    -> FROM EMPLOYEE
+    -> WHERE dept_name = 'Comp. Sci.';
++----------------+
+| average_salary |
++----------------+
+|     77333.3333 |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [dbmslab0304]> SELECT COUNT(DISTINCT ID) AS total_instructors_spring_2018
+    -> FROM TEACHES
+    -> WHERE SEMESTER = 'Spring' AND YEAR = 2018;
++-------------------------------+
+| total_instructors_spring_2018 |
++-------------------------------+
+|                             6 |
++-------------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [dbmslab0304]> SELECT COUNT(*) AS number_of_tuples FROM TEACHES;
++------------------+
+| number_of_tuples |
++------------------+
+|               14 |
++------------------+
+1 row in set (0.000 sec)
+
+MariaDB [dbmslab0304]> SELECT dept_name, AVG(salary) AS avg_salary
+    -> FROM EMPLOYEE
+    -> GROUP BY dept_name;
++------------+------------+
+| dept_name  | avg_salary |
++------------+------------+
+| Biology    | 69000.0000 |
+| Comp. Sci. | 77333.3333 |
+| Elec. Eng. | 80000.0000 |
+| Finance    | 85000.0000 |
+| History    | 60000.0000 |
+| Music      | 40000.0000 |
+| Physics    | 91000.0000 |
++------------+------------+
+7 rows in set (0.001 sec)
+
+MariaDB [dbmslab0304]> SELECT dept_name, AVG(salary) AS avg_salary
+    -> FROM EMPLOYEE
+    -> GROUP BY dept_name
+    -> HAVING avg_salary > 42000;
++------------+------------+
+| dept_name  | avg_salary |
++------------+------------+
+| Biology    | 69000.0000 |
+| Comp. Sci. | 77333.3333 |
+| Elec. Eng. | 80000.0000 |
+| Finance    | 85000.0000 |
+| History    | 60000.0000 |
+| Physics    | 91000.0000 |
++------------+------------+
+6 rows in set (0.001 sec)
+
+MariaDB [dbmslab0304]> SELECT name
+    -> FROM EMPLOYEE
+    -> WHERE name NOT IN ('Mozart', 'Einstein');
++------------+
+| name       |
++------------+
+| Srinivasan |
+| Smith      |
+| Wu         |
+| El Said    |
+| Gold       |
+| Katz       |
+| Cali       |
+| Singh      |
+| Crick      |
+| Brandt     |
+| Kim        |
++------------+
+11 rows in set (0.000 sec)
+
+MariaDB [dbmslab0304]> SELECT e.name
+    -> FROM EMPLOYEE e
+    -> WHERE e.salary > ANY (
+    ->     SELECT salary
+    ->     FROM EMPLOYEE
+    ->     WHERE dept_name = 'Biology'
+    -> );
++----------+
+| name     |
++----------+
+| Wu       |
+| Einstein |
+| Gold     |
+| Katz     |
+| Singh    |
+| Crick    |
+| Brandt   |
+| Kim      |
++----------+
+8 rows in set (0.001 sec)
+
+MariaDB [dbmslab0304]> SELECT e.name
+    -> FROM EMPLOYEE e
+    -> WHERE e.salary > ALL (
+    ->     SELECT salary
+    ->     FROM EMPLOYEE
+    ->     WHERE dept_name = 'Biology'
+    -> );
++----------+
+| name     |
++----------+
+| Wu       |
+| Einstein |
+| Gold     |
+| Katz     |
+| Singh    |
+| Brandt   |
+| Kim      |
++----------+
+7 rows in set (0.000 sec)
+
+MariaDB [dbmslab0304]> SELECT dept_name, AVG(salary) AS avg_salary
+    -> FROM EMPLOYEE
+    -> GROUP BY dept_name
+    -> HAVING AVG(salary) > 42000;
++------------+------------+
+| dept_name  | avg_salary |
++------------+------------+
+| Biology    | 69000.0000 |
+| Comp. Sci. | 77333.3333 |
+| Elec. Eng. | 80000.0000 |
+| Finance    | 85000.0000 |
+| History    | 60000.0000 |
+| Physics    | 91000.0000 |
++------------+------------+
+6 rows in set (0.001 sec)
