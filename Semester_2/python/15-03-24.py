@@ -14,7 +14,7 @@ import keyword
 # print(help("True"))
 
 # print(keyword.iskeyword('if'))
-# print(keyword.iskeyword('range'))
+# print(keyword.iskeyword('False'))
 
 # Value keywords: True, False, None
 # x=100
@@ -23,11 +23,11 @@ import keyword
 # x=None
 # print(bool(x))
 
-# def func():
-#     print("hello") 
-#     return 10
-# x=func()
-# print(x)
+def func():
+    print("hello") 
+    return 10
+x=func()
+print(x)
 
 #Operator Keywords: and(&&), or, not, in, is(same or not =)
 
@@ -54,9 +54,9 @@ import keyword
 #     print(x + 5)
 
 
-name = "Chad"
-x ="C" in name
-print(x)
+# name = "Chad"
+# x ="C" in name
+# print(x)
 
 
 #Control Flow Keywords: if, elif, else
@@ -74,7 +74,7 @@ print(x)
 # cannot start with digit
 # keyword cannot be used
 # cannot use symbols
-eg.
+# eg.
 #1_num=23
 #mark@=23
 
@@ -89,6 +89,6 @@ buddy
 # to define a block of code we use indentation.
 # 4 whitespaces or tab
 
-for i in range(5):
-    print("hello")
-    print(i)
+# for i in range(5):
+#     print("hello")
+#     print(i)
