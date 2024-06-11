@@ -93,6 +93,10 @@ print(mark2.issubset(mark1))
 dict = {1:"apple", 2:8}
 print(dict[2])
 
+
+dicte = {1:8, "apple": "orange"}
+print(dicte[2])
+
 dict={}.fromkeys(["apple","mango"],0)
 print(dict)
 

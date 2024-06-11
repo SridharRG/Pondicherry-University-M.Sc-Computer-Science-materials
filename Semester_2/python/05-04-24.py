@@ -5,7 +5,7 @@ print(list1.remove(2))
 #remove() removes the value of the list
 
 #in - membership function
-
+    
 #list slicing
 list3 = [10,20,30,40,50]
 for i in list3:

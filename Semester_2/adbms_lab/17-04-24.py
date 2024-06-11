@@ -1,3 +1,4 @@
+
 import mysql.connector
 
 # Connecting to the server
@@ -8,30 +9,7 @@ conn = mysql.connector.connect(user='root',
                                auth_plugin='mysql_native_password')
 
 cur = conn.cursor()
-
-# Define the SQL query to select all rows from the instructor table
-query = "SELECT * FROM TEACHES"
-
-# Execute the SQL query
-cur.execute(query)
-
-# Fetch all rows from the result set
-results = cur.fetchall()
-
-# Print the results
-for row in results:
-    print(row)
-import mysql.connector
-
-# Connecting to the server
-conn = mysql.connector.connect(user='root',
-                               host='localhost',
-                               passwd='Sridhar@79',
-                               database='dbmslab0304',
-                               auth_plugin='mysql_native_password')
-
-cur = conn.cursor()
-
+    
 # 1. Insert additional tuple in instructor
 insert_query = "INSERT INTO instructor (ID, name, dept_name, salary) VALUES ('10211', 'Smith', 'Biology', 66000)"
 cur.execute(insert_query)
@@ -86,9 +64,6 @@ for row in salary_results:
 cur.close()
 conn.close()
 
-# Close the cursor and connection
-cur.close()
-conn.close()
 
 # -- OUTPUT
 
